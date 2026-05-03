@@ -15,26 +15,7 @@
             }
             @if (Model.IsAuthorized)
             {
-                <div class="card shadow liquid-card">
-                    <div class="cardaccordion-body text-center">
-                        <h2 class="md3">Здраствуйте, @Model.CurrentUserName</h2>
-                        <p class="text-muted">
-                            Вы успешой вошли в аккаунт.
-                        </p>
-
-                        <div class="d-flex justify-content-center gap-2">
-                            <a asp-page="/Projects" class="btn btn-primary">Все проекты</a>
-
-                            <a asp-page="/MyProjects" class="btn btn-primary">Мои проекты</a>
-                        </div>
-
-                        <form method="post" asp-page-handler="Logout">
-                            <button type="submit" class="btn btn-danger">
-                                Выйти
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                <meta http-equiv="refresh" content="0; url=/Privacy">
             }
             else
             {
