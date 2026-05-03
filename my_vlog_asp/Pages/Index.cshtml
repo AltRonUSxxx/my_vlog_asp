@@ -4,7 +4,7 @@
     ViewData["Title"] = "Главная";
 }
 
-<div class="container mt-5">
+<div class="container mt-5 ">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             @if (!string.IsNullOrEmpty(Model.Message))
@@ -15,9 +15,9 @@
             }
             @if (Model.IsAuthorized)
             {
-                <div class="card shadow">
+                <div class="card shadow liquid-card">
                     <div class="cardaccordion-body text-center">
-                        <h2 class="md3">Здраствуйте, @Model.CurrentUserName, @Model.CurrentUserLogin.</h2>
+                        <h2 class="md3">Здраствуйте, @Model.CurrentUserName</h2>
                         <p class="text-muted">
                             Вы успешой вошли в аккаунт.
                         </p>
@@ -38,12 +38,12 @@
             }
             else
             {
-                <div class="card shadow">
+                <div class="card shadow liquid-card">
                     <div class="card-body">
                         <h2 class="animate_hover text-center mb-4">Добро пожаловать</h2>
                         <ul class="nav nav-tabs mb-3" id="authTabs" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="animate_hover nav-link active"
+                                <button class="liquid-phone animate_hover nav-link active"
                                         id="login-tab"
                                         data-bs-toggle="tab"
                                         data-bs-target="#login"
@@ -54,7 +54,7 @@
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="animate_hover nav-link"
+                                <button class="liquid-phone animate_hover nav-link"
                                         id="login-tab"
                                         data-bs-toggle="tab"
                                         data-bs-target="#register"
@@ -70,19 +70,19 @@
                                 <form method="post" asp-page-handler="Login">
                                     <div class="mb-3">
                                         <label class="form-label">Логин</label>
-                                        <input asp-for="LoginLogin" placeholder="user_name" class="animate_hover form-control" />
+                                        <input asp-for="LoginLogin" placeholder="user_name" class="liquid-card animate_hover form-control" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Пароль</label>
 
                                         
-                                        <input asp-for="LoginPassword" type="password" placeholder="password123" class="animate_hover form-control" id="PasswordVisibilityI" />
+                                        <input asp-for="LoginPassword" type="password" placeholder="password123" class="liquid-card animate_hover form-control" id="PasswordVisibilityI" />
                                         <label id="labelId">
                                             <input type="checkbox" onclick="togglePassword('loginPassword', this)"> Показать
                                         </label>
                                     </div>
 
-                                    <button type="submit" class="animate_hover btn btn-primary w=200">
+                                    <button type="submit" class="liquid-card animate_hover btn btn-primary w=200">
                                         Войти
                                     </button>
                                 </form>
@@ -92,27 +92,27 @@
                                 <form method="post" asp-page-handler="Register">
                                     <div class="mb-3">
                                         <label class="form-label">Имя</label>
-                                        <input asp-for="RegisterName" placeholder="Paul/Stephanie" class="animate_hover form-control" />
+                                        <input asp-for="RegisterName" placeholder="Paul/Stephanie" class="liquid-card animate_hover form-control" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Логин</label>
-                                        <input asp-for="RegisterLogin" class="animate_hover form-control" placeholder="Exampler55" />
+                                        <input asp-for="RegisterLogin" class="liquid-card animate_hover form-control" placeholder="Exampler55" />
                                     </div>
                                    
                                     <div class="mb-3">
                                         <label class="form-label">Возраст</label>
-                                        <input asp-for="RegisterAge" class="animate_hover form-control" placeholder="16 e.g."/>
+                                        <input asp-for="RegisterAge" class="liquid-card animate_hover form-control" placeholder="21" />
                                     </div>
                                    
                                     <div class="mb-3">
                                         <label class="form-label">Пароль</label>
-                                        <input asp-for="RegisterPassword" type="password" class="animate_hover form-control" placeholder="password123" />
+                                        <input asp-for="RegisterPassword" type="password" class="liquid-card animate_hover form-control" placeholder="password123" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Повторите пароль</label>
-                                        <input asp-for="RegistrRepeatPassword" type="password" class="animate_hover form-control" placeholder="password123"/>
+                                        <input asp-for="RegistrRepeatPassword" type="password" class="liquid-card animate_hover form-control" placeholder="password123" />
                                     </div>
-                                    <button type="submit" class="btn btn-primary w=100 animate_hover ">
+                                    <button type="submit" class="liquid-card btn btn-primary w=100 animate_hover ">
                                         Зарегистрироваться
                                     </button>
                                 </form>
