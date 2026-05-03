@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using my_vlog_asp.database;
 
@@ -10,9 +11,11 @@ using my_vlog_asp.database;
 namespace my_vlog_asp.Migrations
 {
     [DbContext(typeof(app_db_context))]
-    partial class app_db_contextModelSnapshot : ModelSnapshot
+    [Migration("20260503073703_removerole")]
+    partial class removerole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.7");
@@ -52,21 +55,6 @@ namespace my_vlog_asp.Migrations
                     b.HasIndex("Userid");
 
                     b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("my_vlog_asp.database.models.Role", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("role")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("my_vlog_asp.database.models.User", b =>

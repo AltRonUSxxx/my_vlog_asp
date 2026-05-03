@@ -78,7 +78,8 @@ namespace my_vlog_asp.Pages
             {
                 username = RegisterName,
                 login = RegisterLogin,
-                age = RegisterAge.Value
+                age = RegisterAge.Value,
+                role_id = 1
             };
 
             user.hashed_password = _passwordHasher.HashPassword(user, RegisterPassword);

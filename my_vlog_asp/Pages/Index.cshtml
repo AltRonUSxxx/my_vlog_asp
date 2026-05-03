@@ -40,10 +40,10 @@
             {
                 <div class="card shadow">
                     <div class="card-body">
-                        <h2 class="text-center mb-4">Добро пожаловать</h2>
+                        <h2 class="animate_hover text-center mb-4">Добро пожаловать</h2>
                         <ul class="nav nav-tabs mb-3" id="authTabs" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active"
+                                <button class="animate_hover nav-link active"
                                         id="login-tab"
                                         data-bs-toggle="tab"
                                         data-bs-target="#login"
@@ -54,7 +54,7 @@
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link"
+                                <button class="animate_hover nav-link"
                                         id="login-tab"
                                         data-bs-toggle="tab"
                                         data-bs-target="#register"
@@ -70,19 +70,19 @@
                                 <form method="post" asp-page-handler="Login">
                                     <div class="mb-3">
                                         <label class="form-label">Логин</label>
-                                        <input asp-for="LoginLogin" class="form-control" />
+                                        <input asp-for="LoginLogin" placeholder="user_name" class="animate_hover form-control" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Пароль</label>
 
                                         
-                                        <input asp-for="LoginPassword" type="password" class="form-control" id="PasswordVisibilityI" />
+                                        <input asp-for="LoginPassword" type="password" placeholder="password123" class="animate_hover form-control" id="PasswordVisibilityI" />
                                         <label id="labelId">
                                             <input type="checkbox" onclick="togglePassword('loginPassword', this)"> Показать
                                         </label>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary w=100">
+                                    <button type="submit" class="animate_hover btn btn-primary w=200">
                                         Войти
                                     </button>
                                 </form>
@@ -92,27 +92,27 @@
                                 <form method="post" asp-page-handler="Register">
                                     <div class="mb-3">
                                         <label class="form-label">Имя</label>
-                                        <input asp-for="RegisterName" class="form-control" />
+                                        <input asp-for="RegisterName" placeholder="Paul/Stephanie" class="animate_hover form-control" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Логин</label>
-                                        <input asp-for="RegisterLogin" class="form-control" />
+                                        <input asp-for="RegisterLogin" class="animate_hover form-control" placeholder="Exampler55" />
                                     </div>
                                    
                                     <div class="mb-3">
                                         <label class="form-label">Возраст</label>
-                                        <input asp-for="RegisterAge" class="form-control" />
+                                        <input asp-for="RegisterAge" class="animate_hover form-control" placeholder="16 e.g."/>
                                     </div>
                                    
                                     <div class="mb-3">
                                         <label class="form-label">Пароль</label>
-                                        <input asp-for="RegisterPassword" type="password" class="form-control" />
+                                        <input asp-for="RegisterPassword" type="password" class="animate_hover form-control" placeholder="password123" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Повторите пароль</label>
-                                        <input asp-for="RegistrRepeatPassword" type="password" class="form-control" />
+                                        <input asp-for="RegistrRepeatPassword" type="password" class="animate_hover form-control" placeholder="password123"/>
                                     </div>
-                                    <button type="submit" class="btn btn-primary w=100">
+                                    <button type="submit" class="btn btn-primary w=100 animate_hover ">
                                         Зарегистрироваться
                                     </button>
                                 </form>
