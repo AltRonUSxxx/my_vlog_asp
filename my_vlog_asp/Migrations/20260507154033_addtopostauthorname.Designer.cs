@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using my_vlog_asp.database;
 
@@ -10,9 +11,11 @@ using my_vlog_asp.database;
 namespace my_vlog_asp.Migrations
 {
     [DbContext(typeof(app_db_context))]
-    partial class app_db_contextModelSnapshot : ModelSnapshot
+    [Migration("20260507154033_addtopostauthorname")]
+    partial class addtopostauthorname
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.7");

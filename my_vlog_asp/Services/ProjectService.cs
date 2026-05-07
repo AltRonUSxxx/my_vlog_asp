@@ -19,6 +19,7 @@ namespace my_vlog_asp.Services
                 .ThenByDescending(p => p.id)
                 .ToList();
         }
+
         public List<Post> GetProjectByAuthorId(int authorId)
         {
             return _context.Posts

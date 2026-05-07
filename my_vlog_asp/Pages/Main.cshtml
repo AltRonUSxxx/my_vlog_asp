@@ -1,0 +1,61 @@
+﻿@page
+@model my_vlog_asp.Pages.HomeModel
+@{
+    ViewData["Title"] = "Главная";
+}
+<div class="container">
+	<nav class="bg-opacity-100 navbar navbar-expand-lg border-bottom">
+		<div class="container-fluid">
+
+				<div class="d-flex flex-column flex-lg-row align-items-center w-100">
+        
+					<form class="w-75" role="search">
+						<input asp-for="whatFind" class="liquid-card animate_hover nice-form-control" placeholder="Search..." />
+					</form>
+
+				<div class="liquid-card animate_hover ms-auto mt-2">
+					<a href="\makePost">
+						<button class="btn " type="button">Make post</button>
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</nav>
+	@if (Model.Posts.Count == 0)
+	{
+		<div class="justify-content-center alert alert-info">
+			Пока актуальных постов нет.
+		</div>
+	}
+	else
+	{
+		<div class="row">
+			@foreach (var post in Model.Posts)
+			{
+				<div class="col-mb-6 mb-4">
+					<div class="card mb-3 h-100 shadow-sm">
+						<h4 class="mb-4 card-title" @post.theme>@post.theme</h4>
+						<p class="mb-2">
+							<span class="badge bg-secondary">@post.status</span>
+						</p>
+						<p class="card-text">@post.category</p>
+
+						<div class="card-footer">
+							<small class="d-block text-muted">
+								Автор: @post.author_name
+							</small>
+							<small class="d-block text-muted">
+								Дата создание: @post.created_at.ToString("dd.MM.yyyy HH:mm");
+							</small>
+							<a asp-page="/ProjectDetails" asp-route-id="@post.id" class="btn btn-outline-primary btn-sm">
+								Открыть
+							</a>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	}
+
+</div>
