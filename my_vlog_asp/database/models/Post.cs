@@ -5,7 +5,6 @@
         public int id { get; set; }
         public int author_id { get; set; }
 
-        public string author_name { get; set; }
         public string category { get; set; }
         public DateTime created_at { get; set; }
         public string text { get; set; }

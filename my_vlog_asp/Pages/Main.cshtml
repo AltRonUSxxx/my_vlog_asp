@@ -34,21 +34,24 @@
 			@foreach (var post in Model.Posts)
 			{
 				<div class="col-mb-6 mb-4">
-					<div class="card mb-3 h-100 shadow-sm">
-						<h4 class="mb-4 card-title" @post.theme>@post.theme</h4>
-						<p class="mb-2">
-							<span class="badge bg-secondary">@post.status</span>
-						</p>
-						<p class="card-text">@post.category</p>
+					<div class="liquid-card animate_hover card mb-3 h-100 shadow-lg">
+						<h4 class="mt-2 ms-2 card-title" @post.theme>@post.theme</h4>
+						<p class="card-text ms-2">@post.text</p>
+						<div class="ms-2 mb-2">
+						@foreach (string tag in post.category.Split(' '))
+						{
+								<span class="badge bg-primary"3>@tag</span>
+						}
+						</div>
 
 						<div class="card-footer">
 							<small class="d-block text-muted">
-								Автор: @post.author_name
+								
 							</small>
 							<small class="d-block text-muted">
-								Дата создание: @post.created_at.ToString("dd.MM.yyyy HH:mm");
+								Дата создание: @post.created_at.ToString("dd.MM.yy");
 							</small>
-							<a asp-page="/ProjectDetails" asp-route-id="@post.id" class="btn btn-outline-primary btn-sm">
+							<a asp-page="/ProjectDetails" asp-route-id="@post.id" class="liquid-card btn btn-sm">
 								Открыть
 							</a>
 						</div>

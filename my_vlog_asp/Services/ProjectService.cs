@@ -15,6 +15,7 @@ namespace my_vlog_asp.Services
         public List<Post> GetAllProjects() 
         {
             return _context.Posts
+                .Where(x => x.is_deleted  == false)
                 .OrderByDescending(p => p.created_at)
                 .ThenByDescending(p => p.id)
                 .ToList();

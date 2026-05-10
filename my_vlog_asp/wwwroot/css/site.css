@@ -51,6 +51,12 @@ body {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.big-text
+{
+    height: 250px;
+    width: 750px;
+}
+
 .animate_hover:hover {
     scale: 1.05;
 }

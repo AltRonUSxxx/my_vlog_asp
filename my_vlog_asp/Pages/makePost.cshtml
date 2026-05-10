@@ -1,0 +1,56 @@
+﻿@page
+@model my_vlog_asp.Pages.makePostModel
+@{
+    ViewData["Title"] = "Главная";
+}
+<button class="liquid-card animate_hover mt-1 btn border-5 rounded-4" type="button" onclick="history.back()">
+    Back
+</button>
+
+<div class="container mt-5 ">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow liquid-phone border-0 rounded-5">
+                <div class="card-body">
+                    <form method="post" asp-page-handler="Make">
+                        <h1 class="animate_hover text-center mb-4">Ur Vlog</h1>
+                        <div class="ms-1 row w-50 mt-1">
+                            Theme
+                            <input asp-for="theme" placeholder="Theme..." class="liquid-card animate_hover nice-form-control mt-1" />
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="ms-1">Text</div>
+                            
+                            <div class="big-text">
+                                <textarea asp-for="text"
+                                          placeholder="What you did yesterday?"
+                                          rows="5"
+                                              class="liquid-card animate_hover nice-form-control big-text mt-1 w-100">
+                                </textarea>
+                            </div>
+                        </div>
+
+                            <div class="row ms-1 w-50 mt-3">
+                            Category
+                            <input asp-for="category" placeholder="#MyDay" class="liquid-card animate_hover nice-form-control mt-1 \" />
+                        </div>
+
+                            <div class="d-flex justify-content-end mt-2">
+                                <button type="submit" class="liquid-card animate_hover btn">
+                                    Make
+                                </button>
+                        </div>
+                    </form>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="mt-5 alert alert-warning">
+        @Model.Message;
+    </div>
+}
