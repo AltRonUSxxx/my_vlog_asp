@@ -5,6 +5,7 @@ namespace my_vlog_asp.Services
     public interface IProjectService
     {
         List<PostView> GetAllProjects();
+        List<PostView> GetAllUserProjects(int authorId);
         List<Post> GetProjectByAuthorId(int authorId);
         Post? GetProjectById(int auhorId);
         void AddProject(Post project);

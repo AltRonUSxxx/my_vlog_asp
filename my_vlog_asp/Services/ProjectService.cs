@@ -21,6 +21,15 @@ namespace my_vlog_asp.Services
                 .ToList());
         }
 
+        public List<PostView> GetAllUserProjects(int authorId)
+        {
+            return PostsToPostViews(_context.Posts
+                .Where(x => x.is_deleted == false && x.author_id == authorId)
+                .OrderByDescending(p => p.created_at)
+                .ThenByDescending(p => p.id)
+                .ToList());
+        }
+
         private List<PostView> PostsToPostViews(List<Post> posts)
         {
             List<PostView> newPosts = new List<PostView>();
