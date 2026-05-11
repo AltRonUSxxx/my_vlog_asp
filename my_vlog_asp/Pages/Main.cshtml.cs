@@ -12,7 +12,7 @@ namespace my_vlog_asp.Pages
 
         [BindProperty]
         public string whatFind { get; set; } = string.Empty;
-        public List<Post> Posts { get; set; } = new();
+        public List<PostView> Posts { get; set; } = new();
         public int TotalPostsCount = 0;
 
         public HomeModel(IProjectService projectService, ICurrentUserService currentUserService)

@@ -12,13 +12,28 @@ namespace my_vlog_asp.Services
         {
             _context = context;
         }
-        public List<Post> GetAllProjects() 
+        public List<PostView> GetAllProjects() 
         {
-            return _context.Posts
-                .Where(x => x.is_deleted  == false)
+            return PostsToPostViews(_context.Posts
+                .Where(x => x.is_deleted == false)
                 .OrderByDescending(p => p.created_at)
                 .ThenByDescending(p => p.id)
-                .ToList();
+                .ToList());
+        }
+
+        private List<PostView> PostsToPostViews(List<Post> posts)
+        {
+            List<PostView> newPosts = new List<PostView>();
+            foreach(Post post in posts)
+            {
+                newPosts.Add(PostToPostView(post));
+            }
+            return newPosts;
+        }
+
+        private PostView PostToPostView(Post post)
+        {
+            return new PostView(post, _context.Users.FirstOrDefault(x => x.id == post.author_id).username);
         }
 
         public List<Post> GetProjectByAuthorId(int authorId)
