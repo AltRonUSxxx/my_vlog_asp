@@ -21,6 +21,18 @@ namespace my_vlog_asp.Pages
             _currentUserService = currentUserService;
         }
 
+        public void OnPostSearch()
+        {
+            if(string.IsNullOrEmpty(whatFind))
+            {
+                LoadProjects();
+                return;
+            }
+            whatFind = whatFind.ToLower();
+            Posts = _projectService.GetAllProjects().Where(x => x.text.ToLower().Contains(whatFind) || x.theme.ToLower().Contains(whatFind) || x.category.ToLower().Contains(whatFind)).ToList();
+            TotalPostsCount = Posts.Count;
+        }
+
         public void OnGet()
         {
             var user = _currentUserService.GetCurrentUser(HttpContext);
