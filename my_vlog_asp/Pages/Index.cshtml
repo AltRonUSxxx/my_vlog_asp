@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Авторизация";
+    ViewData["Title"] = "Authorization";
 }
 <div class="container mt-5 ">
     <div class="row justify-content-center">
@@ -20,7 +20,7 @@
             {
                 <div class="card shadow liquid-card">
                     <div class="card-body">
-                        <h2 class="animate_hover text-center mb-4">Добро пожаловать</h2>
+                        <h2 class="animate_hover text-center mb-4">Welcome</h2>
                         <ul class="nav nav-tabs mb-3" id="authTabs" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="liquid-phone animate_hover nav-link active"
@@ -29,7 +29,7 @@
                                         data-bs-target="#login"
                                         type="button"
                                         role="tab">
-                                    Вход
+                                    Sign in
                                 </button>
                             </li>
 
@@ -40,7 +40,7 @@
                                         data-bs-target="#register"
                                         type="button"
                                         role="tab">
-                                    Регистрация
+                                    Sign up
                                 </button>
                             </li>
                         </ul>
@@ -49,21 +49,21 @@
                             <div class="tab-pane fade show active" id="login" role="tabpanel">
                                 <form method="post" asp-page-handler="Login">
                                     <div class="mb-3">
-                                        <label class="form-label">Логин</label>
+                                        <label class="form-label">Login</label>
                                         <input asp-for="LoginLogin" placeholder="user_name" class="liquid-card animate_hover nice-form-control" />
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Пароль</label>
+                                        <label class="form-label">Password</label>
 
                                         
                                         <input asp-for="LoginPassword" type="password" placeholder="password123" class="liquid-card animate_hover nice-form-control" id="PasswordVisibilityI" />
                                         <label id="labelId">
-                                            <input type="checkbox" onclick="togglePassword('loginPassword', this)"> Показать
+                                            <input type="checkbox" onclick="togglePassword('loginPassword', this)"> Show
                                         </label>
                                     </div>
 
                                     <button type="submit" class="liquid-card animate_hover btn btn-primary w=200">
-                                        Войти
+                                        Sign in
                                     </button>
                                 </form>
                             </div>
@@ -71,29 +71,29 @@
                             <div class="tab-pane fade" id="register" role="tabpanel">
                                 <form method="post" asp-page-handler="Register">
                                     <div class="mb-3">
-                                        <label class="form-label">Имя</label>
+                                        <label class="form-label">Name</label>
                                         <input asp-for="RegisterName" placeholder="Paul/Stephanie" class="liquid-card animate_hover nice-form-control" />
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Логин</label>
+                                        <label class="form-label">Login</label>
                                         <input asp-for="RegisterLogin" class="liquid-card animate_hover nice-form-control" placeholder="Exampler55" />
                                     </div>
                                    
                                     <div class="mb-3">
-                                        <label class="form-label">Возраст</label>
+                                        <label class="form-label">Age</label>
                                         <input asp-for="RegisterAge" class="liquid-card animate_hover nice-form-control" placeholder="21" />
                                     </div>
                                    
                                     <div class="mb-3">
-                                        <label class="form-label">Пароль</label>
+                                        <label class="form-label">Password</label>
                                         <input asp-for="RegisterPassword" type="password" class="liquid-card animate_hover nice-form-control" placeholder="password123" />
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Повторите пароль</label>
+                                        <label class="form-label">Confirm password</label>
                                         <input asp-for="RegistrRepeatPassword" type="password" class="liquid-card animate_hover nice-form-control" placeholder="password123" />
                                     </div>
                                     <button type="submit" class="liquid-card btn btn-primary w=100 animate_hover ">
-                                        Зарегистрироваться
+                                        Sign up
                                     </button>
                                 </form>
                             </div>

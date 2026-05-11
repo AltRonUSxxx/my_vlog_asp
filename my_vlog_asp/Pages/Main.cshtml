@@ -1,7 +1,7 @@
 ﻿@page
 @model my_vlog_asp.Pages.HomeModel
 @{
-    ViewData["Title"] = "Главная";
+    ViewData["Title"] = "Main";
 }
 <div class="container">
 	<nav class="bg-opacity-100 navbar navbar-expand-lg border-bottom">
@@ -25,7 +25,7 @@
 	@if (Model.Posts.Count == 0)
 	{
 		<div class="justify-content-center alert alert-info">
-			Пока актуальных постов нет.
+			No any post yet
 		</div>
 	}
 	else
@@ -49,7 +49,7 @@
 								@@@post.author_name
 							</small>
 							<small class="d-block text-muted">
-								Дата создание: @post.created_at.ToString("dd.MM.yy");
+								Created at: @post.created_at.ToString("dd.MM.yy");
 							</small>
 							@* <a asp-page="/ProjectDetails" asp-route-id="@post.id" class="liquid-card btn btn-sm">
 								Открыть
