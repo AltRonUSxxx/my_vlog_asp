@@ -70,7 +70,8 @@ namespace my_vlog_asp.Services
         }
         public void DeleteProject(Post project)
         {
-            _context.Posts.Remove(project);
+            project.is_deleted = true;
+            _context.Posts.Update(project);
             _context.SaveChanges();
         }
 

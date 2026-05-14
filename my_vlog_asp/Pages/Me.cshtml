@@ -60,11 +60,11 @@
 						<small class="d-block text-muted">
 							Created at: @post.created_at.ToString("dd.MM.yy");
 						</small>
-						@* <form method="post" asp-page-handler="Delete" asp-route-itemid="@post.id">
+						<form method="post" asp-page-handler="UnPost" asp-route-post_id="@post.id">
 							<button type="submit" class="btn btn-danger btn-sm">
-								Удалить
+								Delete
 							</button>
-						</form> *@
+						</form>
 						@* <a asp-page="/ProjectDetails" asp-route-id="@post.id" class="liquid-card btn btn-sm">
 								Открыть
 							</a> *@

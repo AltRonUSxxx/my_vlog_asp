@@ -25,7 +25,7 @@ namespace my_vlog_asp.Pages
 
         public IActionResult OnPostLogout()
         {
-            //HttpContext.Session.Clear();
+            HttpContext.Session.Clear();
             _currentUserService.SignOut(HttpContext);
             return RedirectToPage();
         }
@@ -42,6 +42,28 @@ namespace my_vlog_asp.Pages
             {
                 firstPost = posts[0].created_at;
             }
+        }
+
+        public IActionResult OnPostUnPost(int post_id)
+        {
+            try
+            {
+                Post post = _projectService.GetProjectById(post_id);
+                if(post == null)
+                {
+                    return RedirectToPage();
+                }
+                bool isAuthor = _currentUserService.GetCurrentUser(HttpContext).id == post.author_id;
+                if (isAuthor)
+                {
+                    _projectService.DeleteProject(post);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return RedirectToPage();
         }
 
         public void OnGet()
