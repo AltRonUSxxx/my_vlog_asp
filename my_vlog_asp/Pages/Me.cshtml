@@ -10,7 +10,10 @@
 </form>
 <div class="container big-text">
     <div class="animate_hover mt-5 liquid-phone rounded-5 border-0 w-100 mb-5 h-100">
-        <h1 class="mt-3 ms-5">
+		<a href="\editMe" class="ms-3 mt-2">
+			✎
+		</a>
+        <h1 class=" ms-5">
             @Model.username · @Model.age y.o.
         </h1>
         <h2 class="ms-5 mt-2">
@@ -19,6 +22,7 @@
         <p class="ms-5">
             Posts count: @Model.posts.Count
         </p>
+		
         @if (@Model.posts.Count > 0)
         {
             <p class="ms-5">

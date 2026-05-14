@@ -21,6 +21,12 @@ namespace my_vlog_asp.Services
                 .ToList());
         }
 
+        public bool UpdateUser(int user_id, User newUser, string OldPassword, string newPassword)
+        {
+
+            return true;
+        }
+
         public List<PostView> GetAllUserProjects(int authorId)
         {
             return PostsToPostViews(_context.Posts

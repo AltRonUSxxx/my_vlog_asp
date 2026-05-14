@@ -1,0 +1,47 @@
+﻿@page
+@model my_vlog_asp.Pages.editMeModel
+@{
+}
+
+<form method="post" asp-page-handler="Back">
+    <button class="liquid-card animate_hover mt-1 btn border-5 rounded-4" type="submit">
+        Back
+    </button>
+</form>
+<div class="row justify-content-center container">
+    <div class=" mt-5 liquid-phone rounded-5 border-0 w-75 mb-5 h-100">
+        <h1 class="mt-3 text-center ">
+            Editing
+        </h1>
+        <form method="post" asp-page-handler="ChangeMe">
+
+            <div class="ms-4">*Name</div>
+            <input asp-for="username" value="@Model.username" placeholder="Paul/Stephanie" class="ms-3 mb-3 liquid-card w-95 nice-form-control" />
+
+            <div class="ms-4">*Login</div>
+            <input asp-for="login" value="@Model.login" placeholder="Bestier33" class="ms-3  mb-3 liquid-card  nice-form-control w-95" />
+
+            <div class="ms-4">Old Password</div>
+            <input asp-for="old_password" placeholder="OldPassword123" class="ms-3  mb-2 liquid-card  nice-form-control w-95" />
+
+            <div class="ms-4">New Password</div>
+            <input asp-for="new_password" placeholder="NewPassword123" class="ms-3 mb-2  liquid-card  nice-form-control w-95" />
+
+            <div class="ms-4">Confirm Password</div>
+            <input asp-for="confirm_password" placeholder="NewPassword123" class="ms-3  mb-3  liquid-card  nice-form-control w-95" />
+
+            <div class="ms-4">*Age</div>
+            <input asp-for="age" value="@Model.age" placeholder="19" class="ms-3  mb-5  liquid-card nice-form-control w-95" />
+
+            <button type="submit" class="liquid-card animate_hover mb-3 ms-3 btn btn-primary  w-95">
+                Edit
+            </button>
+        </form>
+    </div>
+</div>
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-warning">
+        @Model.Message;
+    </div>
+}
