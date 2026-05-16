@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using my_vlog_asp.database.models;
@@ -9,7 +10,8 @@ namespace my_vlog_asp.Pages
     {
         private readonly IProjectService _projectService;
         private readonly ICurrentUserService _currentUserService;
-        private User _user;
+        private PasswordHasher<User> _passwordHasher;
+        public int userId { get; set; }
         [BindProperty]
         public string username { get; set; }
         [BindProperty]
@@ -27,28 +29,62 @@ namespace my_vlog_asp.Pages
 
         public editMeModel(IProjectService projectService, ICurrentUserService currentUserService)
         {
+            _passwordHasher = new PasswordHasher<User>();
             _projectService = projectService;
             _currentUserService = currentUserService;
         }
 
-        public IActionResult OnPostChangeMe()
+        public void OnPostChangeMe(int user_id)
         {
             if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(login) || age <= 0)
             {
                 Message = "Fill needable fields";
-                return RedirectToPage();
+                return;
             }
             if(new_password != confirm_password)
             {
                 Message = "New password and confirm password should be same";
-                return RedirectToPage();
+                return;
+            }
+            if(new_password == null)
+            {
+                new_password = "";
             }
             User newUser = new User();
             newUser.username = username;
             newUser.login = login;
             newUser.age = age;
 
-            return Redirect("/Me");
+            string oldPasswordHash = _projectService.GetUserHashedPassword(user_id);
+
+            var res = _passwordHasher.VerifyHashedPassword(
+                newUser,
+                oldPasswordHash,
+                new_password
+            );
+
+            if (res != PasswordVerificationResult.Failed)
+            {
+                newUser.hashed_password = _passwordHasher.HashPassword(
+                    newUser,
+                    new_password
+                );
+            }
+            else
+            {
+                newUser.hashed_password = null;
+            }
+
+            if (_projectService.UpdateUser(user_id, newUser))
+            {
+                Message = "Success";
+                HttpContext.Response.Redirect("/Me");
+            }
+            else
+            {
+                Message = "Error";
+            }
+
         }
 
         public IActionResult OnPostBack()
@@ -74,7 +110,7 @@ namespace my_vlog_asp.Pages
             username = user.username;
             login = user.login;
             age = user.age;
-            _user = user;
+            userId = user.id;
         }
 
     }

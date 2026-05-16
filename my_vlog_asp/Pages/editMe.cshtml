@@ -13,7 +13,7 @@
         <h1 class="mt-3 text-center ">
             Editing
         </h1>
-        <form method="post" asp-page-handler="ChangeMe">
+        <form method="post" asp-route-user_id="@Model.userId" asp-page-handler="ChangeMe">
 
             <div class="ms-4">*Name</div>
             <input asp-for="username" value="@Model.username" placeholder="Paul/Stephanie" class="ms-3 mb-3 liquid-card w-95 nice-form-control" />

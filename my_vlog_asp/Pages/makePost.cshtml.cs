@@ -62,6 +62,7 @@ namespace my_vlog_asp.Pages
 
             _projectService.AddProject(new_post);
             Message = "Success";
+            HttpContext.Response.Redirect("/Main");
         }
     }
 }

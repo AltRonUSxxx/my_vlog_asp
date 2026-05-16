@@ -11,7 +11,8 @@ namespace my_vlog_asp.Services
         void AddProject(Post project);
         void UpdateProject(Post project);
         void DeleteProject(Post project);
-        public bool UpdateUser(User newUser, string OldPassword, string newPassword);
+        string GetUserHashedPassword(int userId);
+        bool UpdateUser(int user_id, User newUser);
         bool ProjectExists(int id);
     }
 }

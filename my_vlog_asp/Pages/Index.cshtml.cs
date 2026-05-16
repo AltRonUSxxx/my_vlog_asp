@@ -54,24 +54,24 @@ namespace my_vlog_asp.Pages
                 || string.IsNullOrEmpty(RegisterPassword)
                 || RegisterAge == null)
             {
-                Message = "Заполните все поля регистрации";
+                Message = "Fill all fields";
                 return Page();
             }
 
             if (RegisterAge <= 0)
             {
-                Message = "Возраст должен быть больше 0.";
+                Message = "Only positive age";
                 return Page();
             }
 
             if (_context.Users.Any(u => u.login == RegisterLogin))
             {
-                Message = "Пользователь с таким логином уже существует";
+                Message = "This login already taken";
                 return Page();
             }
             if (RegisterPassword != RegistrRepeatPassword || string.IsNullOrEmpty(RegistrRepeatPassword))
             {
-                Message = "Пароль не сходиться.";
+                Message = "Passwords should be same";
                 return Page();
             }
             var user = new User
@@ -82,7 +82,7 @@ namespace my_vlog_asp.Pages
                 role_id = 1
             };
 
-            user.hashed_password = _passwordHasher.HashPassword(user, RegisterPassword);
+            user.hashed_password = _passwordHasher.HashPassword(new User(), RegisterPassword);
 
             _context.Users.Add(user);
             _context.SaveChanges();
@@ -97,26 +97,25 @@ namespace my_vlog_asp.Pages
             LoadUser();
             if (string.IsNullOrEmpty(LoginLogin) || string.IsNullOrEmpty(LoginPassword))
             {
-                Message = "Введите логин и пароль.";
+                Message = "Enter login and password";
                 return Page();
             }
             var user = _context.Users.FirstOrDefault(u => u.login == LoginLogin);
 
             if (user == null)
             {
-                Message = "Неверный логин или праоль.";
+                Message = "Uncorrect login or password";
                 return Page();
             }
             var res = _passwordHasher.VerifyHashedPassword(
                     user,
                     user.hashed_password,
                     LoginPassword
-
                 );
 
             if (res == PasswordVerificationResult.Failed)
             {
-                Message = "Не верный логин или пароль";
+                Message = "Uncorrect login or password";
                 return Page();
             }
             //HttpContext.Session.SetInt32("UserId", user.Id);

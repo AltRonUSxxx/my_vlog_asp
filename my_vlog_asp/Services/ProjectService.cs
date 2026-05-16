@@ -21,10 +21,42 @@ namespace my_vlog_asp.Services
                 .ToList());
         }
 
-        public bool UpdateUser(int user_id, User newUser, string OldPassword, string newPassword)
+        public string GetUserHashedPassword(int user_id)
         {
+            User user = _context.Users.FirstOrDefault(x => x.id == user_id);
+            if(user != null)
+            {
+                return user.hashed_password;
+            }
+            return "null";
+        }
 
-            return true;
+        public bool UpdateUser(int user_id, User newUser)
+        {
+            User oldUser = _context.Users.FirstOrDefault(x => x.id == user_id);
+            if(oldUser == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                if(newUser.hashed_password != null)
+                {
+                    oldUser.hashed_password = newUser.hashed_password;
+                }
+                oldUser.username = newUser.username;
+                oldUser.role_id = newUser.role_id;
+                oldUser.age = newUser.age;
+                oldUser.login = newUser.login;
+                _context.Users.Update(oldUser);
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public List<PostView> GetAllUserProjects(int authorId)
@@ -48,7 +80,7 @@ namespace my_vlog_asp.Services
 
         private PostView PostToPostView(Post post)
         {
-            return new PostView(post, _context.Users.FirstOrDefault(x => x.id == post.author_id).username);
+            return new PostView(post, _context.Users.FirstOrDefault(x => x.id == post.author_id).login);
         }
 
         public List<Post> GetProjectByAuthorId(int authorId)
