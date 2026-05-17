@@ -22,13 +22,22 @@
             <input asp-for="login" value="@Model.login" placeholder="Bestier33" class="ms-3  mb-3 liquid-card  nice-form-control w-95" />
 
             <div class="ms-4">Old Password</div>
-            <input asp-for="old_password" placeholder="OldPassword123" class="ms-3  mb-2 liquid-card  nice-form-control w-95" />
+            <input asp-for="old_password" placeholder="OldPassword123" type="password" id="PasswordVisibility2" class="ms-3   liquid-card  nice-form-control w-95" />
+            <label class="ms-4 mb-2" id="labelId">
+                <input type="checkbox" onclick="togglePassword('PasswordVisibility2', this)"> Show
+            </label>
 
             <div class="ms-4">New Password</div>
-            <input asp-for="new_password" placeholder="NewPassword123" class="ms-3 mb-2  liquid-card  nice-form-control w-95" />
+            <input asp-for="new_password" placeholder="NewPassword123" type="password" id="PasswordVisibility3" class="ms-3   liquid-card  nice-form-control w-95" />
+            <label class="ms-4 mb-2" id="labelId">
+                <input type="checkbox" onclick="togglePassword('PasswordVisibility3', this)"> Show
+            </label>
 
             <div class="ms-4">Confirm Password</div>
-            <input asp-for="confirm_password" placeholder="NewPassword123" class="ms-3  mb-3  liquid-card  nice-form-control w-95" />
+            <input asp-for="confirm_password" type="password" id="PasswordVisibility4" placeholder="NewPassword123" class="ms-3    liquid-card  nice-form-control w-95" />
+            <label class="ms-4 mb-3" id="labelId">
+                <input type="checkbox" onclick="togglePassword('PasswordVisibility4', this)"> Show
+            </label>
 
             <div class="ms-4">*Age</div>
             <input asp-for="age" value="@Model.age" placeholder="19" class="ms-3  mb-5  liquid-card nice-form-control w-95" />

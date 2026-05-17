@@ -46,9 +46,10 @@ namespace my_vlog_asp.Pages
                 Message = "New password and confirm password should be same";
                 return;
             }
-            if(new_password == null)
+            if(new_password == null || old_password == null)
             {
                 new_password = "";
+                old_password = "";
             }
             User newUser = new User();
             newUser.username = username;
@@ -60,7 +61,7 @@ namespace my_vlog_asp.Pages
             var res = _passwordHasher.VerifyHashedPassword(
                 newUser,
                 oldPasswordHash,
-                new_password
+                old_password
             );
 
             if (res != PasswordVerificationResult.Failed)

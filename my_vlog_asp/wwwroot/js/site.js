@@ -5,7 +5,7 @@
 //Boolean b = true;
 
 function togglePassword(inputId, button) {
-    const input = document.getElementById("PasswordVisibilityI");
+    const input = document.getElementById(inputId);
     const label = document.getElementById("labelId");
 
     if (input.type === "password") {
